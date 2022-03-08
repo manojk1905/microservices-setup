@@ -1,0 +1,21 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: optional:configserver:http://localhost:9191
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+          - Path=/user/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+          - Path=/order/**

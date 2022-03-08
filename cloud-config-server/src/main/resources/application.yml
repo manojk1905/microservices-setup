@@ -1,0 +1,12 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/manojk1905/config-server
+          clone-on-start: true
